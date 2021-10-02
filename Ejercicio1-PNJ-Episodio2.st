@@ -1,13 +1,13 @@
-!classDefinition: #Desconocido category: 'Ejercicio1-PNJ-Episodio2- Refactor-SinCodigoRepetido'!
+!classDefinition: #Desconocido category: 'Ejercicio1-PNJ-Episodio2'!
 DenotativeObject subclass: #Desconocido
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Ejercicio1-PNJ-Episodio2- Refactor-SinCodigoRepetido'!
+	category: 'Ejercicio1-PNJ-Episodio2'!
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
-!classDefinition: 'Desconocido class' category: 'Ejercicio1-PNJ-Episodio2- Refactor-SinCodigoRepetido'!
+!classDefinition: 'Desconocido class' category: 'Ejercicio1-PNJ-Episodio2'!
 Desconocido class
 	instanceVariableNames: ''!
 
@@ -17,252 +17,78 @@ interaccionCon: unNpc cantidadDeVecesInteraccion: cantidadInteracciones
    ^ unNpc interactuarConDesconocido: cantidadInteracciones.! !
 
 
-!classDefinition: #Npc category: 'Ejercicio1-PNJ-Episodio2- Refactor-SinCodigoRepetido'!
-DenotativeObject subclass: #Npc
+!classDefinition: #Hamilton category: 'Ejercicio1-PNJ-Episodio2'!
+DenotativeObject subclass: #Hamilton
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Ejercicio1-PNJ-Episodio2- Refactor-SinCodigoRepetido'!
+	category: 'Ejercicio1-PNJ-Episodio2'!
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
-!classDefinition: 'Npc class' category: 'Ejercicio1-PNJ-Episodio2- Refactor-SinCodigoRepetido'!
-Npc class
-	instanceVariableNames: 'frasesPrometedoras frasesDesconocidos primeraInteraccion personajesInteractuados'!
-
-!Npc class methodsFor: 'interacciones' stamp: 'jh 9/30/2021 21:46:59'!
-interactuarConDesconocido: cantidadInteracciones
-  
-  ^ self responderSegunCantidadDeInteracciones: cantidadInteracciones conFrase: frasesDesconocidos.! !
-
-!Npc class methodsFor: 'interacciones' stamp: 'jh 9/30/2021 21:47:13'!
-interactuarConPrometedor: cantidadInteracciones
-
-   ^ self responderSegunCantidadDeInteracciones: cantidadInteracciones conFrase: frasesPrometedoras.! !
-
-!Npc class methodsFor: 'interacciones' stamp: 'jh 10/1/2021 12:40:50'!
-olvidar
-
-	personajesInteractuados keys do:[:personaje | self olvidarInteraccionCon: personaje].! !
-
-!Npc class methodsFor: 'interacciones' stamp: 'jh 9/30/2021 21:47:48'!
-olvidarInteraccionCon: unPersonaje
-
-   self colocarCantidadDeInteracciones: primeraInteraccion a: unPersonaje! !
-
-
-!Npc class methodsFor: 'interacciones-private' stamp: 'jh 9/30/2021 21:48:05'!
-aumentarInteraccionesCon: unPersonaje
-
-     self colocarCantidadDeInteracciones: ((personajesInteractuados at: unPersonaje)+ 1) a: unPersonaje.! !
-
-!Npc class methodsFor: 'interacciones-private' stamp: 'jh 9/30/2021 21:48:21'!
-buscarCantidadDeInteracciones: unPersonaje
-
-  ^ (personajesInteractuados at: unPersonaje ifAbsent: [self nuevaInteraccionCon: unPersonaje]) value.! !
-
-!Npc class methodsFor: 'interacciones-private' stamp: 'jh 9/30/2021 21:48:44'!
-cantidadDeInteracciones:unPersonaje
-    |cantidadInteracciones|
-
-     cantidadInteracciones := self buscarCantidadDeInteracciones: unPersonaje.
-     self aumentarInteraccionesCon: unPersonaje.
-
-   ^ cantidadInteracciones.! !
-
-!Npc class methodsFor: 'interacciones-private' stamp: 'jh 9/30/2021 21:48:59'!
-colocarCantidadDeInteracciones: cantidadAColocar a: unPersonaje
-
-      personajesInteractuados at: unPersonaje put: cantidadAColocar.
-
-    ! !
-
-!Npc class methodsFor: 'interacciones-private' stamp: 'jh 9/30/2021 21:49:30'!
-nuevaInteraccionCon: unPersonaje
-
-  self colocarCantidadDeInteracciones: primeraInteraccion a: unPersonaje.
-
-  ^ primeraInteraccion.! !
-
-!Npc class methodsFor: 'interacciones-private' stamp: 'jh 9/30/2021 21:49:57'!
-responderSegunCantidadDeInteracciones:cantidad conFrase: frases
-
-	^ frases at: (cantidad min: frases size)! !
-
-
-!Npc class methodsFor: 'as yet unclassified' stamp: 'jh 10/1/2021 12:43:11'!
-initializeCollaboratorsFromFile
-	"Auto generated method for loading purposes - Do not modify it"
-
-	frasesPrometedoras := nil.
-	frasesDesconocidos := nil.
-	primeraInteraccion := nil.
-	personajesInteractuados := nil.! !
-
-
-!classDefinition: #CarolinaLaCurandera category: 'Ejercicio1-PNJ-Episodio2- Refactor-SinCodigoRepetido'!
-Npc subclass: #CarolinaLaCurandera
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Ejercicio1-PNJ-Episodio2- Refactor-SinCodigoRepetido'!
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-!classDefinition: 'CarolinaLaCurandera class' category: 'Ejercicio1-PNJ-Episodio2- Refactor-SinCodigoRepetido'!
-CarolinaLaCurandera class
-	instanceVariableNames: ''!
-
-!CarolinaLaCurandera class methodsFor: 'interacciones' stamp: 'Jh 9/29/2021 13:33:40'!
-interactuarCon: unPersonaje
-  |interaccion|
-    interaccion := unPersonaje interactuarCon: self conCantidadDeInteracciones: (self cantidadDeInteracciones: unPersonaje).
-    self influenciaAlPuebloSobre: unPersonaje.
-
-   ^ interaccion.
-	! !
-
-
-!CarolinaLaCurandera class methodsFor: 'interacciones-privada' stamp: 'Jh 9/29/2021 13:39:25'!
-influenciaAlPuebloSobre: unPersonaje.
-
-     ((self buscarCantidadDeInteracciones:unPersonaje) > (frasesDesconocidos size)) ifTrue:[
-	   Riverwood sugerirPrometedor: unPersonaje.
-	].! !
-
-
-!CarolinaLaCurandera class methodsFor: 'as yet unclassified' stamp: 'jh 10/1/2021 12:43:11'!
-initializeCollaboratorsFromFile
-	"Auto generated method for loading purposes - Do not modify it"
-
-	frasesPrometedoras := #('Salud aventurero!!' 'Toma esta pócima que te hará crecer el pelo. Y cuando tengas una aflicción, ven a verme' ).
-	frasesDesconocidos := #('¿Estás enfermo forastero?' 'Ah, solo quieres conversar' 'Cuando tengas una aflicción, ven a verme' ).
-	primeraInteraccion := 1.
-	personajesInteractuados := ((Dictionary new) add: (Hamilton->1); add: (Tirion->1); yourself).! !
-
-
-!classDefinition: #TreborElGuardiaDeSkyrim category: 'Ejercicio1-PNJ-Episodio2- Refactor-SinCodigoRepetido'!
-Npc subclass: #TreborElGuardiaDeSkyrim
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Ejercicio1-PNJ-Episodio2- Refactor-SinCodigoRepetido'!
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-!classDefinition: 'TreborElGuardiaDeSkyrim class' category: 'Ejercicio1-PNJ-Episodio2- Refactor-SinCodigoRepetido'!
-TreborElGuardiaDeSkyrim class
-	instanceVariableNames: ''!
-
-!TreborElGuardiaDeSkyrim class methodsFor: 'interacciones' stamp: 'Jh 9/29/2021 13:33:52'!
-interactuarCon: unPersonaje
-	^ unPersonaje interactuarCon: self conCantidadDeInteracciones: (self cantidadDeInteracciones: unPersonaje).! !
-
-
-!TreborElGuardiaDeSkyrim class methodsFor: 'as yet unclassified' stamp: 'jh 10/1/2021 12:43:11'!
-initializeCollaboratorsFromFile
-	"Auto generated method for loading purposes - Do not modify it"
-
-	frasesPrometedoras := #('Bienvenido aventurero!!' 'Espero que tengas una buena estadia en Riverwood' ).
-	frasesDesconocidos := #('Hola forastero' '¿Todo bien?' '¿Algún problema?' ).
-	primeraInteraccion := 1.
-	personajesInteractuados := ((Dictionary new) add: (Hamilton->1); add: ('hamilton'->1); add: ('tirion'->1); add: ('tirom'->1); add: ('tiron'->1); add: (Tirion->1); yourself).! !
-
-
-!classDefinition: #Personaje category: 'Ejercicio1-PNJ-Episodio2- Refactor-SinCodigoRepetido'!
-DenotativeObject subclass: #Personaje
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Ejercicio1-PNJ-Episodio2- Refactor-SinCodigoRepetido'!
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-!classDefinition: 'Personaje class' category: 'Ejercicio1-PNJ-Episodio2- Refactor-SinCodigoRepetido'!
-Personaje class
+!classDefinition: 'Hamilton class' category: 'Ejercicio1-PNJ-Episodio2'!
+Hamilton class
 	instanceVariableNames: 'tipo'!
 
-!Personaje class methodsFor: 'as yet unclassified' stamp: 'jh 9/30/2021 21:58:05'!
+!Hamilton class methodsFor: 'as yet unclassified' stamp: 'jh 10/1/2021 15:18:15'!
 desconocido
 
      tipo := Desconocido
 
      ! !
 
-!Personaje class methodsFor: 'as yet unclassified' stamp: 'jh 9/30/2021 22:04:01'!
+!Hamilton class methodsFor: 'as yet unclassified' stamp: 'jh 10/1/2021 15:18:30'!
 esVistoComo: unTipo
 
     ^ (tipo == unTipo).! !
 
-!Personaje class methodsFor: 'as yet unclassified' stamp: 'jh 10/1/2021 12:43:11'!
+!Hamilton class methodsFor: 'as yet unclassified' stamp: 'jh 10/1/2021 15:39:04'!
 initializeCollaboratorsFromFile
 	"Auto generated method for loading purposes - Do not modify it"
 
-	tipo := nil.! !
+	tipo := Prometedor.! !
 
-!Personaje class methodsFor: 'as yet unclassified' stamp: 'jh 9/30/2021 21:54:54'!
+!Hamilton class methodsFor: 'as yet unclassified' stamp: 'jh 10/1/2021 15:18:45'!
 interactuarCon: unNpc conCantidadDeInteracciones: cantidadInteracciones
 
     ^ tipo interaccionCon: unNpc cantidadDeVecesInteraccion: cantidadInteracciones.! !
 
-!Personaje class methodsFor: 'as yet unclassified' stamp: 'jh 9/30/2021 21:58:15'!
+!Hamilton class methodsFor: 'as yet unclassified' stamp: 'jh 10/1/2021 15:19:13'!
 prometedor
 
-    tipo := Prometedor
-
-     ! !
+    tipo := Prometedor! !
 
 
-!classDefinition: #Hamilton category: 'Ejercicio1-PNJ-Episodio2- Refactor-SinCodigoRepetido'!
-Personaje subclass: #Hamilton
+!classDefinition: #Tirion category: 'Ejercicio1-PNJ-Episodio2'!
+Hamilton subclass: #Tirion
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Ejercicio1-PNJ-Episodio2- Refactor-SinCodigoRepetido'!
+	category: 'Ejercicio1-PNJ-Episodio2'!
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
-!classDefinition: 'Hamilton class' category: 'Ejercicio1-PNJ-Episodio2- Refactor-SinCodigoRepetido'!
-Hamilton class
-	instanceVariableNames: ''!
-
-!Hamilton class methodsFor: 'as yet unclassified' stamp: 'jh 10/1/2021 12:43:11'!
-initializeCollaboratorsFromFile
-	"Auto generated method for loading purposes - Do not modify it"
-
-	tipo := Prometedor.! !
-
-
-!classDefinition: #Tirion category: 'Ejercicio1-PNJ-Episodio2- Refactor-SinCodigoRepetido'!
-Personaje subclass: #Tirion
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Ejercicio1-PNJ-Episodio2- Refactor-SinCodigoRepetido'!
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-!classDefinition: 'Tirion class' category: 'Ejercicio1-PNJ-Episodio2- Refactor-SinCodigoRepetido'!
+!classDefinition: 'Tirion class' category: 'Ejercicio1-PNJ-Episodio2'!
 Tirion class
 	instanceVariableNames: ''!
 
-!Tirion class methodsFor: 'as yet unclassified' stamp: 'jh 10/1/2021 12:43:11'!
+!Tirion class methodsFor: 'as yet unclassified' stamp: 'jh 10/1/2021 15:39:04'!
 initializeCollaboratorsFromFile
 	"Auto generated method for loading purposes - Do not modify it"
 
-	tipo := Prometedor.! !
+	tipo := Desconocido.! !
 
 
-!classDefinition: #Prometedor category: 'Ejercicio1-PNJ-Episodio2- Refactor-SinCodigoRepetido'!
+!classDefinition: #Prometedor category: 'Ejercicio1-PNJ-Episodio2'!
 DenotativeObject subclass: #Prometedor
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Ejercicio1-PNJ-Episodio2- Refactor-SinCodigoRepetido'!
+	category: 'Ejercicio1-PNJ-Episodio2'!
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
-!classDefinition: 'Prometedor class' category: 'Ejercicio1-PNJ-Episodio2- Refactor-SinCodigoRepetido'!
+!classDefinition: 'Prometedor class' category: 'Ejercicio1-PNJ-Episodio2'!
 Prometedor class
 	instanceVariableNames: ''!
 
@@ -273,16 +99,16 @@ interaccionCon: unNpc cantidadDeVecesInteraccion: cantidadInteracciones
        ! !
 
 
-!classDefinition: #PruebasInteracionesConCarolinaLaCurandera category: 'Ejercicio1-PNJ-Episodio2- Refactor-SinCodigoRepetido'!
+!classDefinition: #PruebasInteracionesConCarolinaLaCurandera category: 'Ejercicio1-PNJ-Episodio2'!
 DenotativeObject subclass: #PruebasInteracionesConCarolinaLaCurandera
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Ejercicio1-PNJ-Episodio2- Refactor-SinCodigoRepetido'!
+	category: 'Ejercicio1-PNJ-Episodio2'!
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
-!classDefinition: 'PruebasInteracionesConCarolinaLaCurandera class' category: 'Ejercicio1-PNJ-Episodio2- Refactor-SinCodigoRepetido'!
+!classDefinition: 'PruebasInteracionesConCarolinaLaCurandera class' category: 'Ejercicio1-PNJ-Episodio2'!
 PruebasInteracionesConCarolinaLaCurandera class
 	instanceVariableNames: ''!
 
@@ -435,16 +261,16 @@ olvidarInteraccionesYOpiniones
 ! !
 
 
-!classDefinition: #PruebasInteracionesConTreborElGuardia category: 'Ejercicio1-PNJ-Episodio2- Refactor-SinCodigoRepetido'!
+!classDefinition: #PruebasInteracionesConTreborElGuardia category: 'Ejercicio1-PNJ-Episodio2'!
 DenotativeObject subclass: #PruebasInteracionesConTreborElGuardia
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Ejercicio1-PNJ-Episodio2- Refactor-SinCodigoRepetido'!
+	category: 'Ejercicio1-PNJ-Episodio2'!
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
-!classDefinition: 'PruebasInteracionesConTreborElGuardia class' category: 'Ejercicio1-PNJ-Episodio2- Refactor-SinCodigoRepetido'!
+!classDefinition: 'PruebasInteracionesConTreborElGuardia class' category: 'Ejercicio1-PNJ-Episodio2'!
 PruebasInteracionesConTreborElGuardia class
 	instanceVariableNames: ''!
 
@@ -581,16 +407,16 @@ olvidarInteraccionesYOpiniones
 ! !
 
 
-!classDefinition: #Riverwood category: 'Ejercicio1-PNJ-Episodio2- Refactor-SinCodigoRepetido'!
+!classDefinition: #Riverwood category: 'Ejercicio1-PNJ-Episodio2'!
 DenotativeObject subclass: #Riverwood
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'Ejercicio1-PNJ-Episodio2- Refactor-SinCodigoRepetido'!
+	category: 'Ejercicio1-PNJ-Episodio2'!
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
-!classDefinition: 'Riverwood class' category: 'Ejercicio1-PNJ-Episodio2- Refactor-SinCodigoRepetido'!
+!classDefinition: 'Riverwood class' category: 'Ejercicio1-PNJ-Episodio2'!
 Riverwood class
 	instanceVariableNames: ''!
 
@@ -619,9 +445,134 @@ sugerirPrometedor: unPersonaje.
    CarolinaLaCurandera olvidarInteraccionCon: unPersonaje.
    TreborElGuardiaDeSkyrim olvidarInteraccionCon: unPersonaje.! !
 
-Npc initializeAfterFileIn!
-CarolinaLaCurandera initializeAfterFileIn!
-TreborElGuardiaDeSkyrim initializeAfterFileIn!
-Personaje initializeAfterFileIn!
+
+!classDefinition: #TreborElGuardiaDeSkyrim category: 'Ejercicio1-PNJ-Episodio2'!
+DenotativeObject subclass: #TreborElGuardiaDeSkyrim
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Ejercicio1-PNJ-Episodio2'!
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+!classDefinition: 'TreborElGuardiaDeSkyrim class' category: 'Ejercicio1-PNJ-Episodio2'!
+TreborElGuardiaDeSkyrim class
+	instanceVariableNames: 'frasesPrometedoras frasesDesconocidos primeraInteraccion personajesInteractuados'!
+
+!TreborElGuardiaDeSkyrim class methodsFor: 'interacciones' stamp: 'Jh 9/29/2021 13:33:52'!
+interactuarCon: unPersonaje
+	^ unPersonaje interactuarCon: self conCantidadDeInteracciones: (self cantidadDeInteracciones: unPersonaje).! !
+
+!TreborElGuardiaDeSkyrim class methodsFor: 'interacciones' stamp: 'jh 10/1/2021 15:13:43'!
+interactuarConDesconocido: cantidadInteracciones
+  
+  ^ self responderSegunCantidadDeInteracciones: cantidadInteracciones conFrase: frasesDesconocidos.! !
+
+!TreborElGuardiaDeSkyrim class methodsFor: 'interacciones' stamp: 'jh 10/1/2021 15:14:01'!
+interactuarConPrometedor: cantidadInteracciones
+
+   ^ self responderSegunCantidadDeInteracciones: cantidadInteracciones conFrase: frasesPrometedoras.! !
+
+!TreborElGuardiaDeSkyrim class methodsFor: 'interacciones' stamp: 'jh 10/1/2021 15:14:14'!
+olvidar
+
+	personajesInteractuados keys do:[:personaje | self olvidarInteraccionCon: personaje].! !
+
+!TreborElGuardiaDeSkyrim class methodsFor: 'interacciones' stamp: 'jh 10/1/2021 15:14:28'!
+olvidarInteraccionCon: unPersonaje
+
+   self colocarCantidadDeInteracciones: primeraInteraccion a: unPersonaje! !
+
+
+!TreborElGuardiaDeSkyrim class methodsFor: 'interacciones-private' stamp: 'jh 10/1/2021 15:14:44'!
+aumentarInteraccionesCon: unPersonaje
+
+     self colocarCantidadDeInteracciones: ((personajesInteractuados at: unPersonaje)+ 1) a: unPersonaje.! !
+
+!TreborElGuardiaDeSkyrim class methodsFor: 'interacciones-private' stamp: 'jh 10/1/2021 15:15:00'!
+buscarCantidadDeInteracciones: unPersonaje
+
+  ^ (personajesInteractuados at: unPersonaje ifAbsent: [self nuevaInteraccionCon: unPersonaje]) value.! !
+
+!TreborElGuardiaDeSkyrim class methodsFor: 'interacciones-private' stamp: 'jh 10/1/2021 15:15:17'!
+cantidadDeInteracciones:unPersonaje
+    |cantidadInteracciones|
+
+     cantidadInteracciones := self buscarCantidadDeInteracciones: unPersonaje.
+     self aumentarInteraccionesCon: unPersonaje.
+
+   ^ cantidadInteracciones.! !
+
+!TreborElGuardiaDeSkyrim class methodsFor: 'interacciones-private' stamp: 'jh 10/1/2021 15:15:39'!
+colocarCantidadDeInteracciones: cantidadAColocar a: unPersonaje
+
+      personajesInteractuados at: unPersonaje put: cantidadAColocar.
+! !
+
+!TreborElGuardiaDeSkyrim class methodsFor: 'interacciones-private' stamp: 'jh 10/1/2021 15:15:53'!
+nuevaInteraccionCon: unPersonaje
+
+  self colocarCantidadDeInteracciones: primeraInteraccion a: unPersonaje.
+
+  ^ primeraInteraccion.! !
+
+!TreborElGuardiaDeSkyrim class methodsFor: 'interacciones-private' stamp: 'jh 10/1/2021 15:16:13'!
+responderSegunCantidadDeInteracciones:cantidad conFrase: frases
+
+	^ frases at: (cantidad min: frases size)! !
+
+
+!TreborElGuardiaDeSkyrim class methodsFor: 'as yet unclassified' stamp: 'jh 10/1/2021 15:39:04'!
+initializeCollaboratorsFromFile
+	"Auto generated method for loading purposes - Do not modify it"
+
+	frasesPrometedoras := #('Bienvenido aventurero!!' 'Espero que tengas una buena estadia en Riverwood' ).
+	frasesDesconocidos := #('Hola forastero' '¿Todo bien?' '¿Algún problema?' ).
+	primeraInteraccion := 1.
+	personajesInteractuados := ((Dictionary new) add: (Hamilton->3); add: (Tirion->1); yourself).! !
+
+
+!classDefinition: #CarolinaLaCurandera category: 'Ejercicio1-PNJ-Episodio2'!
+TreborElGuardiaDeSkyrim subclass: #CarolinaLaCurandera
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Ejercicio1-PNJ-Episodio2'!
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+!classDefinition: 'CarolinaLaCurandera class' category: 'Ejercicio1-PNJ-Episodio2'!
+CarolinaLaCurandera class
+	instanceVariableNames: ''!
+
+!CarolinaLaCurandera class methodsFor: 'interacciones' stamp: 'Jh 9/29/2021 13:33:40'!
+interactuarCon: unPersonaje
+  |interaccion|
+    interaccion := unPersonaje interactuarCon: self conCantidadDeInteracciones: (self cantidadDeInteracciones: unPersonaje).
+    self influenciaAlPuebloSobre: unPersonaje.
+
+   ^ interaccion.
+	! !
+
+
+!CarolinaLaCurandera class methodsFor: 'interacciones-privada' stamp: 'Jh 9/29/2021 13:39:25'!
+influenciaAlPuebloSobre: unPersonaje.
+
+     ((self buscarCantidadDeInteracciones:unPersonaje) > (frasesDesconocidos size)) ifTrue:[
+	   Riverwood sugerirPrometedor: unPersonaje.
+	].! !
+
+
+!CarolinaLaCurandera class methodsFor: 'as yet unclassified' stamp: 'jh 10/1/2021 15:39:04'!
+initializeCollaboratorsFromFile
+	"Auto generated method for loading purposes - Do not modify it"
+
+	frasesPrometedoras := #('Salud aventurero!!' 'Toma esta pócima que te hará crecer el pelo. Y cuando tengas una aflicción, ven a verme' ).
+	frasesDesconocidos := #('¿Estás enfermo forastero?' 'Ah, solo quieres conversar' 'Cuando tengas una aflicción, ven a verme' ).
+	primeraInteraccion := 1.
+	personajesInteractuados := ((Dictionary new) add: (Hamilton->1); add: (Tirion->1); yourself).! !
+
 Hamilton initializeAfterFileIn!
 Tirion initializeAfterFileIn!
+TreborElGuardiaDeSkyrim initializeAfterFileIn!
+CarolinaLaCurandera initializeAfterFileIn!
